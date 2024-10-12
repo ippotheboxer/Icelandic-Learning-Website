@@ -1,0 +1,18 @@
+<%- include("partials/header.ejs") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+</head>
+<body>
+    <h1>Select which topic you would like to practice.</h1>
+    <form method="post" action="/submit">
+        <input type="submit" name="topic" value='fruits'/>
+        <input type="submit" name="topic" value='vegetables'/>
+        <input type="submit" name="topic" value='colours'/>
+      </form>
+</body>
+</html>
