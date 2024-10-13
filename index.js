@@ -1,10 +1,20 @@
 import express from "express";
 import bodyParser from "body-parser";
+import fs from "fs"
 const app = express();
 const port = 3000;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true}));
+
+fs.readFile("data.json", (error, data) => {
+  if (error) {
+    console.error(error);
+
+    throw err;
+  }
+  const jsonData = JSON.parse(data);
+});
 
 // All paths
 app.get("/", (req, res) => {
