@@ -12,17 +12,19 @@
     </style>
 </head>
 <body>
+    <% if(locals.data.topic) { %>
+        <% var sendTopic = data.topic%>
+        <% } %>
+
     <div class="container">
-        <h1>Memory game</h1>
+        <h1> <%=sendTopic%> </h1>
         <h2>Find pairs!</h2>
+        <h3>Tries: 0</h3>
         <div class="game"></div>
         <button class="reset" onclick="window.location.reload();">Reset Game</button>
     </div>
-
-    <% if(locals.data.topic) { %>
-        <% var sendTopic = data.topic %>
-        <% } %>
     
+    <% sendTopic = sendTopic.split(':')[0] %>
     <script>
 const matches = {
     '🍎': 'epli',
@@ -67,7 +69,7 @@ const matches = {
     '🐟': 'fiskur'
 }
 
-var topic = "<%=sendTopic%>";
+var topic = "<%=sendTopic%>".toLowerCase();
 if(topic==='fruits') {
     var emojis = ["🍎", "🍎", "🍐", "🍐", "🍌", "🍌", "🍊", "🍊", "🍋", "🍋", "🍓", "🍓", "🍇", "🍇", "🍒", "🍒"];
 }
@@ -77,7 +79,7 @@ if(topic==='vegetables') {
 if(topic==='colours') {
     var emojis = ["❤️", "❤️", "🧡", "🧡", "💛", "💛", "💚", "💚", "💙", "💙", "💜", "💜", "🤍", "🤍", "🖤", "🖤"];
 }
-if(topic==='food') {
+if(topic==='foods') {
     var emojis = ["🍞", "🍞", "🧀", "🧀", "🥩", "🥩", "🍕", "🍕", "🌭", "🌭", "🥪", "🥪", "🥚", "🥚", "🥛", "🥛"];
 }
 if(topic==='animals') {
@@ -85,7 +87,7 @@ if(topic==='animals') {
 }
 
 var shuf_emojis = emojis.sort(() => (Math.random() > .5)  ? 2:-1);
-
+var tries = 0;
 
 for (let i=0; i<emojis.length ;i++) {
     let box = document.createElement('div');
@@ -118,6 +120,8 @@ for (let i=0; i<emojis.length ;i++) {
                     } else {
                         document.querySelectorAll('.boxOpen')[1].classList.remove('boxOpen');
                         document.querySelectorAll('.boxOpen')[0].classList.remove('boxOpen');
+                        tries ++;
+                        updateTries(tries);
                     }
                 }
         },500)
@@ -133,6 +137,10 @@ function playSoundMatch(fruitEmoji) {
 
 function updateH2(fruitName) {
     document.querySelector('h2').innerText = fruitName;
+}
+
+function updateTries(tries) {
+    document.querySelector('h3').innerText = `Tries: ${tries}`;
 }
     </script>
 </body>

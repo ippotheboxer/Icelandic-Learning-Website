@@ -13,13 +13,13 @@
 <body>
     <div class="container">
     <h1>Select which topic you would like to practice.</h1>
+    <% if (locals.topicsList) { %>
     <form method="post" action="/submit">
-        <input type="submit" name="topic" value='fruits'/>
-        <input type="submit" name="topic" value='vegetables'/>
-        <input type="submit" name="topic" value='colours'/>
-        <input type="submit" name="topic" value='food'/>
-        <input type="submit" name="topic" value='animals'/>
+        <% for(let topic of topicsList) { %>
+        <input type="submit" name="topic" value="<%=topic.topic_name_eng%>: <%=topic.topic_name_is%>"/>
+        <% } %>
       </form>
+      <% } %>
     </div>
 </body>
 </html>

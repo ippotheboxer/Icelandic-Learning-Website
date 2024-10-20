@@ -1,28 +1,41 @@
 import express from "express";
 import bodyParser from "body-parser";
-import fs from "fs"
+import pg from "pg";
+
 const app = express();
 const port = 3000;
+
+const db = new pg.Client({
+  user: "postgres",
+  host: "localhost",
+  database: "Your database",
+  password: "Your password",
+  port: 5432,
+  });
+db.connect();
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true}));
 
-fs.readFile("data.json", (error, data) => {
-  if (error) {
-    console.error(error);
+async function getTopics() {
+  const result = await db.query("SELECT * FROM topics");
+  let topicsList = [];
+  result.rows.forEach((topic) => {
+    topicsList.push(topic);
+   });
+   console.log(topicsList);
+   return topicsList;
+ }
 
-    throw err;
-  }
-  const jsonData = JSON.parse(data);
-});
 
 // All paths
 app.get("/", (req, res) => {
   res.render("home.ejs");
 });
 
-app.get("/memoryMenu", (req, res) => {
-  res.render("menu.ejs");
+app.get("/memoryMenu", async (req, res) => {
+  const result = await getTopics();
+  res.render("menu.ejs", {topicsList: result});
 });
 
 app.post("/submit", (req,res) => {
@@ -33,5 +46,5 @@ app.post("/submit", (req,res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-  });
+  console.log(`Listening on port ${port}`);
+});
