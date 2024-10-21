@@ -9,7 +9,7 @@ const db = new pg.Client({
   user: "postgres",
   host: "localhost",
   database: "icelandicLearning",
-  password: "Your Password",
+  password: "Your password",
   port: 5432,
   });
 db.connect();
@@ -51,11 +51,12 @@ app.get("/dictionary", async (req, res) => {
   res.render("dictionary.ejs", {topicsList: result, matching_items:itemResult});
 });
 
-app.post("/submit", (req,res) => {
+app.post("/submit", async (req,res) => {
+  const itemResult = await getItems();
   let data = {
     topic:req.body.topic
   }
-  res.render("matchingGame.ejs", {data:data})
+  res.render("matchingGame.ejs", {data:data, matching_items:itemResult})
 })
 
 app.listen(port, () => {

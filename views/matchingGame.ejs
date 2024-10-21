@@ -24,50 +24,16 @@
         <button class="reset" onclick="window.location.reload();">Reset Game</button>
     </div>
     
-    <% sendTopic = sendTopic.split(':')[0] %>
+    <% sendTopic = sendTopic.split(':')[0]; %>
+
+    <% if (locals.matching_items) { %>
+        <% var itemMatches = {}; %>
+        <% for (let item of matching_items) { %>
+            <% itemMatches[`${item.emoji}`] = `${item.icelandic}`%>
+        <% } } %>
+
     <script>
-const matches = {
-    '🍎': 'epli',
-    '🍐': 'pera',
-    '🍌': 'banani',
-    '🍊': 'appelsína',
-    '🍋': 'sítróna',
-    '🍓': 'jarðarber',
-    '🍇': 'vínber',
-    '🍒': 'kirsuber',
-    '🧅': 'laukur',
-    '🧄': 'hvítlaukur',
-    '🥔': 'kartafla',
-    '🥕': 'gulrót',
-    '🥒': 'gúrka',
-    '🍄': 'sveppur',
-    '🥬': 'kál',
-    '🥦': 'brokkolí',
-    '❤️': 'rauður',
-    '🧡': 'appelsínugulur',
-    '💛': 'gulur',
-    '💚': 'grænn',
-    '💙': 'blár',
-    '💜': 'fjólublár',
-    '🤍': 'hvítur',
-    '🖤': 'svartur',
-    '🍞': 'brauð',
-    '🧀': 'ostur',
-    '🥩': 'kjöt',
-    '🍕': 'pitsa',
-    '🌭': 'pylsa',
-    '🥪': 'samloka',
-    '🥚': 'egg',
-    '🥛': 'mjólk',
-    '🐱': 'köttur',
-    '🐶': 'hundur',
-    '🐓': 'kjúklingur',
-    '🦆': 'önd',
-    '🐖': 'svín',
-    '🐎': 'hestur',
-    '🐄': 'kú',
-    '🐟': 'fiskur'
-}
+const matches = JSON.parse('<%-JSON.stringify(itemMatches)%>');
 
 var topic = "<%=sendTopic%>".toLowerCase();
 if(topic==='fruits') {
