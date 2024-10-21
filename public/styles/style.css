@@ -60,8 +60,8 @@ h3 {
 }
 
 .game {
-    width: 430px;
-    height: 430px;
+    width: 650px;
+    height: max-content;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
