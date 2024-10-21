@@ -8,8 +8,8 @@ const port = 3000;
 const db = new pg.Client({
   user: "postgres",
   host: "localhost",
-  database: "Your database",
-  password: "Your password",
+  database: "icelandicLearning",
+  password: "Your Password",
   port: 5432,
   });
 db.connect();
@@ -23,10 +23,17 @@ async function getTopics() {
   result.rows.forEach((topic) => {
     topicsList.push(topic);
    });
-   console.log(topicsList);
    return topicsList;
  }
 
+ async function getItems() {
+  const result = await db.query("SELECT * FROM matching_items");
+  let itemsList = [];
+  result.rows.forEach((item) => {
+    itemsList.push(item);
+   });
+   return itemsList;
+ }
 
 // All paths
 app.get("/", (req, res) => {
@@ -36,6 +43,12 @@ app.get("/", (req, res) => {
 app.get("/memoryMenu", async (req, res) => {
   const result = await getTopics();
   res.render("menu.ejs", {topicsList: result});
+});
+
+app.get("/dictionary", async (req, res) => {
+  const result = await getTopics();
+  const itemResult = await getItems();
+  res.render("dictionary.ejs", {topicsList: result, matching_items:itemResult});
 });
 
 app.post("/submit", (req,res) => {

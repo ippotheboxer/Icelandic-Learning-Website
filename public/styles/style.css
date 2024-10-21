@@ -114,3 +114,49 @@ form input:hover {
     background: #134B70;
     color: #bbe2eb;
 }
+
+h2#topicName {
+    background-color: #508C9B;
+    padding: 6px 5px;
+    width: 100%;
+}
+
+
+td, th {
+    font-size: 1.5em;
+    padding-bottom: 5px;
+    text-align: start;
+}
+
+td {
+    font-size: 1.3em;
+}
+
+.dictionary {
+    margin-bottom: 20px;
+    background-color: #bbe2eb;
+    color: #134B70;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+button.sound {
+    background-color: #bbe2eb;
+    color: #134B70;
+    border: none;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+}
+
+svg {
+    width: 21px;
+    height: 21px;
+}
+
+table {
+    position: relative;
+    width: 100%;
+    padding: 5px 10px;
+}
