@@ -1,8 +1,10 @@
 {
   "dependencies": {
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
-    "pg": "^8.13.0"
+    "pg": "^8.13.0",
+    "process": "^0.11.10"
   },
   "name": "matching-card-game",
   "version": "1.0.0",

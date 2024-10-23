@@ -7,21 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Game</title>
     <style>
-        body {align-items: center;
-        padding-top: 0px;}
+        .content {
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
     <% if(locals.data.topic) { %>
         <% var sendTopic = data.topic%>
         <% } %>
-
-    <div class="container">
-        <h1> <%=sendTopic%> </h1>
-        <h2>Find pairs!</h2>
-        <h3>Tries: 0</h3>
-        <div class="game"></div>
-        <button class="reset" onclick="window.location.reload();">Reset Game</button>
+        <div class="content">
+            <div class="container">
+                <h1> <%=sendTopic%> </h1>
+                <h2>Find pairs!</h2>
+                <h3>Tries: 0</h3>
+                <div class="game"></div>
+                <button class="reset" onclick="window.location.reload();">Reset Game</button>
+            </div>
     </div>
     
     <% sendTopic = sendTopic.split(':')[0]; %>

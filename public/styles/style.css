@@ -2,16 +2,94 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 4rem;
+.iceland-background {
+    width: 100%;
+    background-image: url("../images/robert-lukeman-zNN6ubHmruI-unsplash.jpg");
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:cover;
+    transition: background-image 5s ease-in-out;
+}
+
+section {
+    position: relative;
+    width: 100%;
     min-height: 100vh;
-    background: #134B70;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFF;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    position: relative;
+    max-width: 80px;
+}
+
+header ul {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    display: flex;
+}
+
+header ul li {
+    list-style: none;
+}
+
+header ul li a {
+    display: inline-block;
+    color: #2E3135;
+    font-weight: 400;
+    margin-left: 40px;
+    text-decoration: none;
+}
+
+.content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content .textBox {
+    position: relative;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    padding: 15px 15px;
+}
+
+.content .textBox h2 {
+    color: #2E3135;
+    font-size: 3.5em;
+    font-weight: 500;
+}
+
+.content .textBox h2 span {
+    color: #7AB2D3;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.content .textBox p {
+    color: #2E3135;
 }
 
 .container {
@@ -21,32 +99,20 @@ body {
     justify-content: center;
     align-items: center;
     gap: 30px;
-    background: #508C9B;
+    background: #7AB2D3;
     padding: 40px 60px;
-}
-
-h1 {
-    font-size: 2.5em;
-    color: #fff;
-    letter-spacing: 0.1em;   
-}
-
-h2 {
-    font-size: 2em;
-    color: #fff;
-    letter-spacing: 0.1em;
 }
 
 h3 {
     font-size: 1.5em;
-    color: #bbe2eb;
+    color: #B9E5E8;
     letter-spacing: 0.1em;
 }
 
 .reset {
     padding: 15px 20px;
-    background: #EEEEEE;
-    color: #508C9B;
+    background: #B9E5E8;
+    color: #7AB2D3;
     border: none;
     font-size: 1.5em;
     letter-spacing: 0.1em;
@@ -55,8 +121,8 @@ h3 {
 }
 
 .reset:focus {
-    background: #bbe2eb;
-    color:  #EEEEEE;
+    background: #B9E5E8;
+    color:  #FFF;
 }
 
 .game {
@@ -90,7 +156,7 @@ h3 {
     content: '';
     position: absolute;
     inset: 0;
-    background: #bbe2eb;
+    background: #B9E5E8;
     transition: 0.25s;
     transform: rotateY(0deg);
     backface-visibility: hidden;
@@ -112,17 +178,17 @@ form input#menuButton {
     font-size: 1.3em;
     margin-bottom: 10px;
     border-radius: 10px;
-    background: #bbe2eb;
-    color: #134B70;
+    background: #B9E5E8;
+    color: #2E3135;
 }
 
 #menuButton:hover {
-    background: #134B70;
-    color: #bbe2eb;
+    background: #2E3135;
+    color: #B9E5E8;
 }
 
 h2#topicName {
-    background-color: #508C9B;
+    background-color: #7AB2D3;
     padding: 6px 5px;
     width: 100%;
 }
@@ -145,8 +211,8 @@ th#centeredColumn, td#centeredColumn {
 
 .dictionary {
     margin-bottom: 20px;
-    background-color: #bbe2eb;
-    color: #134B70;
+    background-color: #B9E5E8;
+    color: #4A628A;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -155,8 +221,8 @@ th#centeredColumn, td#centeredColumn {
 }
 
 button.sound {
-    background-color: #bbe2eb;
-    color: #134B70;
+    background-color: #B9E5E8;
+    color: #4A628A;
     border: none;
     letter-spacing: 0.1em;
     cursor: pointer;
@@ -201,14 +267,19 @@ button.icelandicLetter {
     padding: 2px 2px;
     margin-right: 5px;
     border-radius: 2px;
-    background-color: #bbe2eb;
-    color: #134B70;
+    background-color: #B9E5E8;
+    color: #2E3135;
     border: none;
     letter-spacing: 0.1em;
     cursor: pointer;
 }
 
 button.icelandicLetter:focus {
-    background: #bbe2eb;
+    background: #B9E5E8;
     color:  #EEEEEE;
+}
+
+@media (width <= 1250px) {
+    header ul li a {font-size: 1rem;} 
+    header ul {padding: 5px;}
 }
