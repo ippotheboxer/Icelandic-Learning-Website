@@ -60,7 +60,7 @@ h3 {
 }
 
 .game {
-    width: 650px;
+    width: 430px;
     height: max-content;
     display: flex;
     flex-wrap: wrap;
@@ -100,7 +100,7 @@ h3 {
     transform: rotateY(180deg);
 }
 
-form input {
+form input#menuButton {
     border: none;
     position: relative;
     display: flex;
@@ -116,7 +116,7 @@ form input {
     color: #134B70;
 }
 
-form input:hover {
+#menuButton:hover {
     background: #134B70;
     color: #bbe2eb;
 }
@@ -136,6 +136,7 @@ td, th {
 
 td {
     font-size: 1.3em;
+    width: 140px;
 }
 
 th#centeredColumn, td#centeredColumn {
@@ -170,4 +171,44 @@ table {
     position: relative;
     width: 100%;
     padding: 5px 10px;
+}
+
+.flashcardImg {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.letterContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.letterContainer > * {
+    display: inline-block;
+}
+
+button.icelandicLetter {
+    width: 30px;
+    height: 30px;
+    padding: 2px 2px;
+    margin-right: 5px;
+    border-radius: 2px;
+    background-color: #bbe2eb;
+    color: #134B70;
+    border: none;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+}
+
+button.icelandicLetter:focus {
+    background: #bbe2eb;
+    color:  #EEEEEE;
 }

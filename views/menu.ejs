@@ -16,7 +16,7 @@
     <% if (locals.topicsList) { %>
     <form method="post" action="/submit">
         <% for(let topic of topicsList) { %>
-        <input type="submit" name="topic" value="<%=topic.topic_name_eng%>: <%=topic.topic_name_is%>"/>
+        <input id="menuButton" type="submit" name="topic" value="<%=topic.topic_name_eng%>: <%=topic.topic_name_is%>"/>
         <% } %>
       </form>
       <% } %>

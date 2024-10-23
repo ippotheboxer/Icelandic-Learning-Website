@@ -23,6 +23,7 @@ a {
     text-decoration: none;
     font-size: 1.25rem;
     color: #134B70;
+    padding-right: 20px;
 }
 
 @media (width <= 1250px) {

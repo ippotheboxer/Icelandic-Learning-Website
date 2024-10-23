@@ -9,7 +9,7 @@ const db = new pg.Client({
   user: "postgres",
   host: "localhost",
   database: "icelandicLearning",
-  password: "Your password",
+  password: "Mikolas1:):(",
   port: 5432,
   });
 db.connect();
@@ -58,6 +58,29 @@ app.post("/submit", async (req,res) => {
   }
   res.render("matchingGame.ejs", {data:data, matching_items:itemResult})
 })
+
+app.get("/flashcard", async (req, res) => {
+  const itemResult = await getItems();
+  var itemMatches = {}; 
+  for (let item of itemResult) { 
+      itemMatches[`${item.emoji}`] = `${item.icelandic}`
+    }; 
+  var keys = Object.keys(itemMatches);
+  const randomKey = keys[ keys.length * Math.random() << 0];
+  const randomValue = itemMatches[randomKey];
+  res.render("flashcard.ejs", {matching_items:itemMatches, random_item:randomKey, random_value:randomValue});
+});
+
+app.post("/submitFlashcard", async (req,res) => {
+  const userAnswer = req.body.userInputIs.trim();
+  const correctAnswer = req.body.correctAnswer;
+  if (userAnswer.toLowerCase() === correctAnswer) {
+    console.log("Correct!");
+  } else {
+    console.log("Incorrect.")
+  }
+  res.redirect("/flashcard");
+});
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

@@ -1,0 +1,50 @@
+<%- include("partials/header.ejs") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard mode</title>
+</head>
+<body>
+    <div class="container">
+    <h1>Flashcard mode</h1>
+    <h3>Score: 0</h3>
+    <% if (locals.random_item) { %>
+    <div class="flashcardImg"><%=random_item%></div>
+    <% } %>
+    <div class="letterContainer">
+    <button class="icelandicLetter" value="á" onClick="addLetter('á')">á</button>
+    <button class="icelandicLetter" value="ð" onClick="addLetter('ð')">ð</button>
+    <button class="icelandicLetter" value="é" onClick="addLetter('é')">é</button>
+    <button class="icelandicLetter" value="í" onClick="addLetter('í')">í</button>
+    <button class="icelandicLetter" value="ó" onClick="addLetter('ó')">ó</button>
+    <button class="icelandicLetter" value="ú" onClick="addLetter('ú')">ú</button>
+    <button class="icelandicLetter" value="ý" onClick="addLetter('ý')">ý</button>
+    <button class="icelandicLetter" value="þ" onClick="addLetter('þ')">þ</button>
+    <button class="icelandicLetter" value="æ" onClick="addLetter('æ')">æ</button>
+    <button class="icelandicLetter" value="ö" onClick="addLetter('ö')">ö</button>
+</div>
+<% if (locals.random_value) { %>
+    <% var correctAnswer = random_value; %>
+    <% } %>
+    <form method="post" action="/submitFlashcard">
+        <label for="userInputIs">Write Icelandic here</label>
+        <input type="text" id="userInputIs" name="userInputIs">
+        <input type="hidden" id="correctAnswer" name="correctAnswer" value="<%=correctAnswer%>">
+    </form>
+</div>
+<script>
+    function addLetter(letter){
+    var val =document.getElementById('userInputIs').value;
+    document.getElementById('userInputIs').value=val + letter;
+    }
+
+    function updateScore(score) {
+    document.querySelector('h3').innerText = `Score: ${score}`;
+}
+</script>
+    
+</body>
+</html>
